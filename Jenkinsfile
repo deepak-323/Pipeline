@@ -24,10 +24,11 @@ pipeline {
 	       }
             }
         }
-       stage('Publish') {
-           steps {
-	     archiveArtifacts artifacts: '/var/lib/jenkins/jobs/pipeline-1/builds/**/*.exe', fingerprint: true
-	   }
-       }
     }
+   post {
+        success {
+            archiveArtifacts artifacts: '**/*.exe', fingerprint: true
+        }
+    }
+}
 }
