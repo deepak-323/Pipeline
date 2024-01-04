@@ -19,8 +19,7 @@ pipeline {
 	stage('Run Python Script') {
             steps {
                 script { // Your build commands go here 
-	          sh "chmod +x -R ${env.WORKSPACE}"
-		  sh 'cd /usr/bin/' 
+	          sh "chmod +x -R ${env.WORKSPACE}" 
 		  sh 'python TF_Inference_cifar.py'
 	       }
             }
