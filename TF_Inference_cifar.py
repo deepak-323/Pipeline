@@ -1,4 +1,4 @@
-import tensorflow-cpu as tf
+import tensorflow as tf
 from tensorflow.keras import datasets, layers, models
 
 #Download and Prepare Cifar dataset
