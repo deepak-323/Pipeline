@@ -26,7 +26,7 @@ pipeline {
         }
        stage('Publish') {
            steps {
-	     archiveArtifacts artifacts: '/var/lib/jenkins/jobs/pipeline-1/builds/'
+	     archiveArtifacts artifacts: '/var/lib/jenkins/jobs/pipeline-1/builds/**/*.exe', fingerprint: true
 	   }
        }
     }
