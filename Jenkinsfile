@@ -10,6 +10,13 @@ pipeline {
                 }
             }
         }
+	 stage('Build') {
+            steps {
+               script { // Your build commands go here
+                 sh 'TF_Inference_cifar.py'
+	       }
+            }
+        }
     }
 }
 
