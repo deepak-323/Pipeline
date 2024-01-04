@@ -13,6 +13,7 @@ pipeline {
 	 stage('Build') {
             steps {
                script { // Your build commands go here 
+	        sh "chmod +x -R ${env.WORKSPACE}"
 		sh './TF_Inference_cifar.py'
 	       }
             }
