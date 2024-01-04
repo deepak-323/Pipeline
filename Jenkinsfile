@@ -16,7 +16,7 @@ pipeline {
                 sh 'pip install -r requirements.txt'
             }
         }
-	stage('Build') {
+	stage('Run Python Script') {
             steps {
                 script { // Your build commands go here 
 	          sh "chmod +x -R ${env.WORKSPACE}"
