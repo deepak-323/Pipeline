@@ -20,7 +20,7 @@ pipeline {
             steps {
                 script { // Your build commands go here 
 	          sh "chmod +x -R ${env.WORKSPACE}"
-		  sh '/usr/bin/python3 python TF_Inference_cifar.py'
+		  sh '/usr/bin/ python TF_Inference_cifar.py'
 	       }
             }
         }
