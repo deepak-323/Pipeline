@@ -16,7 +16,7 @@ pipeline {
                 sh 'pip install -r requirements.txt'
             }
         }
-	stage('Run Python Script') {
+	stage('Test') {
             steps {
                 script { // Your build commands go here 
 	          sh "chmod +x -R ${env.WORKSPACE}" 
@@ -24,5 +24,10 @@ pipeline {
 	       }
             }
         }
+       stage('Publish') {
+           steps {
+	     archiveArtifacts artifacts: 'build/'
+	   }
+       }
     }
 }
