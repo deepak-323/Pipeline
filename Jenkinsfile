@@ -26,7 +26,7 @@ pipeline {
         }
        stage('Publish') {
            steps {
-	     archiveArtifacts artifacts: 'build/'
+	     archiveArtifacts artifacts: '/var/lib/jenkins/jobs/pipeline-1/builds/'
 	   }
        }
     }
