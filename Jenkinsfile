@@ -1,4 +1,5 @@
 pipeline {
+    def buildNumber = currentBuild.number
     agent any
     stages {
         stage('Git Checkout') {
@@ -21,6 +22,7 @@ pipeline {
                 script { // Your build commands go here 
 	          sh "chmod +x -R ${env.WORKSPACE}" 
 		  sh '/usr/bin/python3 /var/lib/jenkins/workspace/pipeline-1/TF_Inference_cifar.py'
+		  sh "echo ${buildNumber}"
 	       }
             }
         }
@@ -33,7 +35,7 @@ pipeline {
 	stage('Upload to S3') {
             steps {
                 script {
-                    sh "aws s3 cp /var/lib/jenkins/jobs/pipeline-1/builds/50/log s3://mcw-pipeline/Artifacts/"
+                    sh "aws s3 cp /var/lib/jenkins/jobs/pipeline-1/builds/${buildNumber} s3://mcw-pipeline/Artifacts/"
                 }
             }
         }
