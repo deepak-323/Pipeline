@@ -34,7 +34,7 @@ pipeline {
 	stage('Upload to S3') {
             steps {
                 script {
-                    sh "mkdir mcw-pipeline/Artifacts/${currentBuild.number}
+                    sh "mkdir mcw-pipeline/Artifacts/${currentBuild.number}"
 		    sh "aws s3 sync /var/lib/jenkins/jobs/pipeline-1/builds/${currentBuild.number} s3://mcw-pipeline/Artifacts/${currentBuild.number}/"
 
                 }
