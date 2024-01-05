@@ -36,7 +36,7 @@ pipeline {
             steps {
                 script {
                     
-		    sh "aws s3 sync /var/lib/jenkins/jobs/pipeline-1/builds/${currentBuild.number}.tar.gz s3://mcw-pipeline/Artifacts"
+		    sh "aws s3 sync /var/lib/jenkins/workspace/pipeline-1/${currentBuild.number}.tar.gz s3://mcw-pipeline/Artifacts"
 
                 }
             }
