@@ -34,7 +34,7 @@ pipeline {
          steps {
             script {
 	       /* Define the Artifactory Server details */
-               def server = Artifactory.server 'defaultjfrog'
+               def server = Artifactory.server 'jfrog'
                def uploadSpec = """{
                "files": [{
                "pattern": "/var/lib/jenkins/jobs/pipeline-1/builds/50/build.xml",
