@@ -30,22 +30,13 @@ pipeline {
                 archiveArtifacts artifacts: '*'
             }
         }
-	stage('Stage Artifacts'){
-         steps {
-            script {
-	       /* Define the Artifactory Server details */
-               def server = Artifactory.server 'jfrog'
-               def uploadSpec = """{
-               "files": [{
-               "pattern": "/var/lib/jenkins/jobs/pipeline-1/builds/50/build.xml",
-               "target": "mcw"
-            }]
-        }"""
-        /* Upload the war to  Artifactory repo */
-        server.upload(uploadSpec)
-    }
-   }
-  }
+	stage('Upload to S3') {
+            steps {
+                script {
+                    sh "aws s3 cp /var/lib/jenkins/jobs/pipeline-1/builds/50/build.xml s3://mcw-pipeline/Artifacts/"
+                }
+            }
+        }
 }
       
    
