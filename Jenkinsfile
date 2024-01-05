@@ -30,8 +30,23 @@ pipeline {
                 archiveArtifacts artifacts: '*'
             }
         }
-	
+	stage('Stage Artifacts'){
+         steps {
+            script {
+	       /* Define the Artifactory Server details */
+               def server = Artifactory.server 'defaultjfrog'
+               def uploadSpec = """{
+               "files": [{
+               "pattern": "/var/lib/jenkins/jobs/pipeline-1/builds/50/build.xml",
+               "target": "mcw"
+            }]
+        }"""
+        /* Upload the war to  Artifactory repo */
+        server.upload(uploadSpec)
     }
+   }
+  }
+}
       
    
  }
