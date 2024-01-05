@@ -21,6 +21,7 @@ pipeline {
                 script { // Your build commands go here 
 	          sh "chmod +x -R ${env.WORKSPACE}" 
 		  sh '/usr/bin/python3 /var/lib/jenkins/workspace/pipeline-1/TF_Inference_cifar.py'
+		  sh '/usr/bin/python3 /var/lib/jenkins/workspace/pipeline-1/TF_Inference_cifar.py build'
 	       }
             }
         }
