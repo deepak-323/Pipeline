@@ -33,7 +33,7 @@ pipeline {
 	stage('Upload to S3') {
             steps {
                 script {
-                    sh "aws s3 cp /var/lib/jenkins/jobs/pipeline-1/builds/50/build.xml s3://mcw-pipeline/Artifacts/"
+                    sh "aws s3 cp /var/lib/jenkins/jobs/pipeline-1/builds/50/log s3://mcw-pipeline/Artifacts/"
                 }
             }
         }
