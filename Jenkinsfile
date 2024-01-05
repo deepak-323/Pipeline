@@ -28,7 +28,7 @@ pipeline {
     }
     post {
                 always {
-                    junit '*.txt'
+                    junit '*'
                 }
             }
    
