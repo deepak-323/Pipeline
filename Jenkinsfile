@@ -53,7 +53,7 @@ pipeline {
 	stage('Upload to S3') {
             steps {
                 script {
-                    def outputDir = "/var/lib/jenkins/workspace/pipeline-1/output.tar.gz"
+                    def outputDir = "/var/lib/jenkins/workspace/pipeline-1"
 		    sh "aws s3 cp ${outputDir}/output.tar.gz s3://mcw-pipeline/Artifacts/"
 
                 }
