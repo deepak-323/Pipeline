@@ -35,12 +35,12 @@ pipeline {
             steps {
                 script {
                     def buildNumber = env.BUILD_NUMBER
-                    def outputDir = "/var/lib/jenkins/jobs/pipeline-1/builds/${buildNumber}"
+                    def outputDir = "/var/lib/jenkins/jobs/pipeline-1/builds/${currentBuild.number}"
 
                     // Check if the directory exists
                     if (fileExists(outputDir)) {
                         // Create a tar file
-                        sh "tar -czvf output.tar.gz -C ${outputDir} ."
+                        sh "tar -czvf output.tar.gz --exclude='*.tmp' -C ${outputDir} ."
                     } else {
                         error "Output directory not found: ${outputDir}"
                     }
@@ -51,7 +51,7 @@ pipeline {
             steps {
                 script {
                     
-		    sh "aws s3 cp /var/lib/jenkins/jobs/pipeline-1/builds/56/ s3://mcw-pipeline/Artifacts/ --recursive"
+		    sh "aws s3 cp /var/lib/jenkins/jobs/pipeline-1/builds/${currentBuild.number} s3://mcw-pipeline/Artifacts/ --recursive"
 
                 }
             }
