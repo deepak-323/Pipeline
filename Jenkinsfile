@@ -31,6 +31,14 @@ pipeline {
                 archiveArtifacts artifacts: '*'
             }
         }
+	stage('Create Tarball') {
+            steps {
+                script {
+                    // Create a tarball of the artifacts
+                    sh "tar -czvf ${env.WORKSPACE}/artifacts.tar.gz -C ${env.WORKSPACE} ."
+                }
+            }
+        }
 	stage('Upload to S3') {
             steps {
                 script {
