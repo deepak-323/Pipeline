@@ -1,8 +1,5 @@
 pipeline {
     agent any
-    environment {
-        outputDir = "/var/lib/jenkins/jobs/pipeline-1/builds/${currentBuild.number}"
-    }
     stages {
         stage('Git Checkout') {
             steps {
