@@ -31,11 +31,19 @@ pipeline {
                 archiveArtifacts artifacts: '*'
             }
         }
-	stage('Create Tarball') {
+	stage('Create Tar File') {
             steps {
                 script {
-                    // Create a tarball of the artifacts
-                    sh "tar -czvf ${env.WORKSPACE}/artifacts.tar.gz -C ${env.WORKSPACE} ."
+                    def buildNumber = env.BUILD_NUMBER
+                    def outputDir = "/var/lib/jenkins/jobs/pipeline-1/builds/${buildNumber}"
+
+                    // Check if the directory exists
+                    if (fileExists(outputDir)) {
+                        // Create a tar file
+                        sh "tar -czvf output.tar.gz -C ${outputDir} ."
+                    } else {
+                        error "Output directory not found: ${outputDir}"
+                    }
                 }
             }
         }
