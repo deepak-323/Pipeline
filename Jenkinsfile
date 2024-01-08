@@ -35,7 +35,7 @@ pipeline {
             steps {
                 script {
                     // Create a tarball of the artifacts
-                    sh "tar -czvf ${env.WORKSPACE}/artifacts.tar.gz -C ${env.WORKSPACE} ."
+                    sh "tar -czvf ${currentBuild.number}/artifacts.tar.gz -C ${currentBuild.number} ."
                 }
             }
         }
