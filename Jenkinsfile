@@ -40,7 +40,7 @@ pipeline {
                     // Check if the directory exists
                     if (fileExists(outputDir)) {
                         // Create a tar file
-                        sh "sleep 5 && tar -czvf output.tar.gz --exclude='*.tmp' --ignore-failed-read -C ${outputDir} ."
+                        sh "sleep 5 && tar -czvf ${outputDir}/output.tar.gz --exclude='*.tmp' --ignore-failed-read -C ${outputDir} ."
                     } else {
                         error "Output directory not found: ${outputDir}"
                     }
@@ -50,7 +50,7 @@ pipeline {
 	stage('Upload to S3') {
             steps {
                 script {
-                    def outputDir = "/var/lib/jenkins/workspace/pipeline-1"
+                    def outputDir = "/var/lib/jenkins/jobs/pipeline-1/builds/${currentBuild.number}"
 		    sh "aws s3 cp ${outputDir}/output.tar.gz s3://mcw-pipeline/Artifacts/"
 
                 }
