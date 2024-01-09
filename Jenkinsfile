@@ -51,6 +51,8 @@ pipeline {
             steps {
                 script {
                     def outputDir = "/var/lib/jenkins/jobs/pipeline-1/builds/${currentBuild.number}"
+		    echo "Output Directory: ${outputDir}"
+                    echo "Tar File Path: ${outputDir}/output.tar.gz"
 		    sh "aws s3 cp ${outputDir}/output.tar.gz s3://mcw-pipeline/Artifacts/"
 
                 }
