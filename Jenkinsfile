@@ -51,7 +51,7 @@ pipeline {
             steps {
                 script {
                     def outputDir = "/var/lib/jenkins/workspace/pipeline-1"
-		    sh "aws s3 cp ${outputDir}/output.tar.gz s3://mcw-pipeline/Artifacts/"
+		    sh "aws s3 cp ${outputDir}/output.tar.gz s3://mcw-pipeline/Artifacts/Pipeline-1/${currentBuild.number}"
 
                 }
             }
