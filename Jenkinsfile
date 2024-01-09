@@ -40,7 +40,7 @@ pipeline {
                     // Check if the directory exists
                     if (fileExists(outputDir)) {
                         // Create a tar file
-                        sh "sleep 5 && tar -czvf ${outputDir}/output.tar.gz --exclude='*.tmp' --ignore-failed-read -C ${outputDir} ."
+                        sh "sleep 5 && tar --warning=no-file-changed -czvf ${outputDir}/output.tar.gz --exclude='*.tmp' --ignore-failed-read -C ${outputDir} ."
                     } else {
                         error "Output directory not found: ${outputDir}"
                     }
