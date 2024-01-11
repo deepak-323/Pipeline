@@ -57,8 +57,10 @@ pipeline {
             }
         }
     }
+    environment {
+        BUILD_URL = "http://15.206.159.119:8080/job/pipeline-1/${currentBuild.number}"
+    }
     post {
-      def BUILD_URL = "http://15.206.159.119:8080/job/pipeline-1/${currentBuild.number}"
       failure {
             emailext subject: "Failed: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
                       body: "Build URL: ${env.BUILD_URL}",
