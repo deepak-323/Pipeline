@@ -57,5 +57,21 @@ pipeline {
             }
         }
     }
+    post {
+      failure {
+            emailext subject: "Failed: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+                      body: "Build URL: ${env.BUILD_URL}",
+                      to: 'deepak.sudhakar@multicorewareinc.com',
+                      replyTo: 'deepak.sudhakar@multicorewareinc.com',
+                      mimeType: 'text/html'
+        }
+        success {
+            emailext subject: "Success: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+                      body: "Build URL: ${env.BUILD_URL}",
+                      to: 'deepak.sudhakar@multicorewareinc.com',
+                      replyTo: 'deepak.sudhakar@multicorewareinc.com',
+                      mimeType: 'text/html'
+        }
+}
 }
 
