@@ -58,7 +58,7 @@ pipeline {
         }
     }
     environment {
-        BUILD_URL = "http://13.126.213.197:8080/job/pipeline-1/${currentBuild.number}"
+        BUILD_URL = "http://13.201.64.184:8080/job/pipeline-1/${currentBuild.number}"
     }
     post {
       failure {
